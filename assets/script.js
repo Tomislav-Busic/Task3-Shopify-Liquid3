@@ -1,21 +1,32 @@
-var ip = "86.33.86.100";
-var access_key = "6cff20186044ce2be984438909bddd97";
+let placeForTemplate = document.getElementById("geolocation");
 let userData = [];
-let title = document.querySelector("span");
+let countryName = "";
 
 const fetchData = async () => {
-  await fetch(`http://api.ipstack.com/${ip}?access_key=${access_key}`)
-    .then((res) => res.json())
-    .then((data) => {
-      userData = [data];
-      console.log(userData);
-      localStorage.setItem("country", userData[0]?.country_name);
-      showCountry();
-    });
+  countryName = localStorage.getItem("country");
+  let userData = new Api();
+  userData = await userData.fetchData();
+  console.log(userData);
+  displayData(userData);
 };
 
-const showCountry = () => {
-  title.innerText = localStorage.getItem("country");
+const displayData = (userData) => {
+  template_geolocation = geolocation.innerHTML;
+
+  template_geolocation = template_geolocation.replaceAll(
+    "${countryName}",
+    countryName
+  );
+  template_geolocation = template_geolocation.replaceAll(
+    "${lat}",
+    userData?.latitude
+  );
+  template_geolocation = template_geolocation.replaceAll(
+    "${long}",
+    userData?.longitude
+  );
+
+  placeForTemplate.innerHTML = template_geolocation;
 };
 
 fetchData();
