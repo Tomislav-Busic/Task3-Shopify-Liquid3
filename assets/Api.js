@@ -6,7 +6,7 @@ class Api {
   async fetchData() {
     try {
       let ip = "86.33.86.100";
-      let access_key = "c9a9f70ecacedbff3687630659c0a95d";
+      let access_key = "327772b704fb82b47aef8cbcb02f5990";
       const response = await fetch(
         `http://api.ipstack.com/${ip}?access_key=${access_key}`
       );

@@ -1,9 +1,7 @@
 let placeForTemplate = document.getElementById("geolocation");
 let userData = [];
-let countryName = "";
 
 const fetchData = async () => {
-  countryName = localStorage.getItem("country");
   let userData = new Api();
   userData = await userData.fetchData();
   console.log(userData);
