@@ -13,7 +13,7 @@ const displayData = (userData) => {
 
   template_geolocation = template_geolocation.replaceAll(
     "${countryName}",
-    countryName
+    localStorage.getItem("country")
   );
   template_geolocation = template_geolocation.replaceAll(
     "${lat}",
